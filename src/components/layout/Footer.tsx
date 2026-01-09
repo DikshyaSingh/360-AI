@@ -1,4 +1,4 @@
-import { Sparkles, Github, Twitter, Linkedin } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
@@ -13,7 +13,7 @@ export const Footer = () => {
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
               <span className="font-display font-bold text-lg gradient-text">
-                360° AI Hackathon
+                AI 360°  
               </span>
             </Link>
             <p className="text-muted-foreground max-w-sm">
@@ -46,7 +46,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground text-sm">
-          <p>© 2026 360° AI Hackathon !</p>
+          <p>© 2026 AI 360°. </p>
         </div>
       </div>
     </footer>

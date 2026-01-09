@@ -30,7 +30,7 @@ export const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-8"
           >
             <Zap className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">45-Minute Challenge</span>
+            <span className="text-sm font-medium text-primary">Rapid Prototyping Challenge</span>
           </motion.div>
 
           {/* Title */}
@@ -57,8 +57,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
-            Build real-world solutions for social good in just{" "}
-            <span className="neon-text font-semibold">45 minutes</span> using Gen AI
+            Build real-world solutions for social good using Gen AI
           </motion.p>
 
           {/* CTA Buttons */}
