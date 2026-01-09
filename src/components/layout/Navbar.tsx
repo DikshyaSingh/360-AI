@@ -15,7 +15,7 @@ const navLinks = [
       { name: "Discord", path: "https://discord.gg/b9jQraVKRY", external: true }
     ]
   },
-  { name: "Problems", path: "/problems" },
+  { name: "Problem Statements", path: "/problems" },
 ];
 
 export const Navbar = () => {
@@ -198,7 +198,7 @@ export const Navbar = () => {
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
-                  Problems
+                  Problem Statements
                 </Link>
 
                 <a
