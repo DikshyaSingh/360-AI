@@ -35,7 +35,9 @@ export const SubmitCTA = () => {
                         </p>
 
                         <motion.a
-                            href="#"
+                            href="https://forms.gle/mCfAenbv1FRFKiem9"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-display font-semibold text-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"

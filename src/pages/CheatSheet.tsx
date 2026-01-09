@@ -45,7 +45,7 @@ const CheatSheet = () => {
                                     <Target className="w-6 h-6 text-primary" />
                                 </div>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold">
-                                    🎯 PHASE 1: Problem Discovery & Research
+                                    PHASE 1: Problem Discovery & Research
                                 </h2>
                             </div>
                         </motion.div>
@@ -88,7 +88,7 @@ const CheatSheet = () => {
                                     <Lightbulb className="w-6 h-6 text-secondary" />
                                 </div>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold">
-                                    💡 PHASE 2: Solution Design & Innovation
+                                    PHASE 2: Solution Design & Innovation
                                 </h2>
                             </div>
                         </motion.div>
@@ -141,7 +141,7 @@ const CheatSheet = () => {
                                     <Database className="w-6 h-6 text-accent" />
                                 </div>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold">
-                                    📊 PHASE 3: Data Sources & Integration
+                                    PHASE 3: Data Sources & Integration
                                 </h2>
                             </div>
                         </motion.div>
@@ -183,7 +183,7 @@ const CheatSheet = () => {
                                     <Code className="w-6 h-6 text-primary" />
                                 </div>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold">
-                                    💻 PHASE 4: Rapid Prototyping
+                                    PHASE 4: Rapid Prototyping
                                 </h2>
                             </div>
                         </motion.div>
@@ -239,7 +239,7 @@ const CheatSheet = () => {
                                     <Sparkles className="w-6 h-6 text-secondary" />
                                 </div>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold">
-                                    🚀 Pro Tips for Better Prompts
+                                    Pro Tips for Better Prompts
                                 </h2>
                             </div>
                         </motion.div>
@@ -248,7 +248,7 @@ const CheatSheet = () => {
                             <GlassCard className="border-l-4 border-green-500/50">
                                 <div className="flex items-center gap-2 mb-4">
                                     <CheckCircle className="w-6 h-6 text-green-500" />
-                                    <h3 className="font-display text-xl font-semibold">✅ DO:</h3>
+                                    <h3 className="font-display text-xl font-semibold">DO:</h3>
                                 </div>
                                 <ul className="space-y-2 text-muted-foreground">
                                     <li className="flex gap-2">
@@ -277,7 +277,7 @@ const CheatSheet = () => {
                             <GlassCard className="border-l-4 border-red-500/50">
                                 <div className="flex items-center gap-2 mb-4">
                                     <XCircle className="w-6 h-6 text-red-500" />
-                                    <h3 className="font-display text-xl font-semibold">❌ DON'T:</h3>
+                                    <h3 className="font-display text-xl font-semibold">DON'T:</h3>
                                 </div>
                                 <ul className="space-y-2 text-muted-foreground">
                                     <li className="flex gap-2">
@@ -392,7 +392,7 @@ const CheatSheet = () => {
                         <GlassCard className="bg-gradient-to-br from-primary/10 to-secondary/10">
                             <div className="flex items-center justify-center gap-2 mb-4">
                                 <Rocket className="w-8 h-8 text-primary" />
-                                <h2 className="font-display text-2xl font-bold">🎯 Remember:</h2>
+                                <h2 className="font-display text-2xl font-bold">Remember:</h2>
                             </div>
                             <p className="text-lg mb-4">
                                 <strong>Your domain knowledge + AI's speed = Powerful solutions</strong>

@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import GlassCard from "@/components/ui/GlassCard";
 import {
@@ -24,10 +25,10 @@ const deliverables = [
 
 const supportMechanisms = [
   { icon: Users, title: "Student Anchors & Volunteers", description: "Peer support throughout the event" },
-  { icon: MessageSquare, title: "Gen AI Prompt Cheat Sheet", description: "Pre-crafted prompts for quick starts" },
+  { icon: MessageSquare, title: "Gen AI Prompt Cheat Sheet", description: "Pre-crafted prompts for quick starts", link: "/cheat-sheet" },
   { icon: Headphones, title: "Mentor Lifeline (2 mins)", description: "Quick expert guidance when stuck" },
   { icon: Wrench, title: "Help Desk", description: "Technical blocker resolution" },
-  { icon: MessageCircle, title: "Discord Channel", description: "Real-time community support" },
+  { icon: MessageCircle, title: "Discord Channel", description: "Real-time community support", link: "https://discord.gg/b9jQraVKRY", external: true },
   { icon: ClipboardCheck, title: "Evaluation Form", description: "Transparent scoring criteria" },
 ];
 
@@ -100,16 +101,40 @@ const About = () => {
             </motion.h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {supportMechanisms.map((item, i) => (
-                <GlassCard key={i} delay={i * 0.1}>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-secondary/10 shrink-0">
-                      <item.icon className="w-5 h-5 text-secondary" />
+                <GlassCard key={i} delay={i * 0.1} className={item.link ? "cursor-pointer hover:scale-105 transition-transform" : ""}>
+                  {item.link ? (
+                    item.external ? (
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4">
+                        <div className="p-3 rounded-lg bg-secondary/10 shrink-0">
+                          <item.icon className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div>
+                          <h3 className="font-display font-semibold mb-1">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      </a>
+                    ) : (
+                      <Link to={item.link} className="flex items-start gap-4">
+                        <div className="p-3 rounded-lg bg-secondary/10 shrink-0">
+                          <item.icon className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div>
+                          <h3 className="font-display font-semibold mb-1">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      </Link>
+                    )
+                  ) : (
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-secondary/10 shrink-0">
+                        <item.icon className="w-5 h-5 text-secondary" />
+                      </div>
+                      <div>
+                        <h3 className="font-display font-semibold mb-1">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-display font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
-                    </div>
-                  </div>
+                  )}
                 </GlassCard>
               ))}
             </div>

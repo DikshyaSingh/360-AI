@@ -11,7 +11,8 @@ const navLinks = [
     path: "/about",
     submenu: [
       { name: "About Challenge", path: "/about" },
-      { name: "Cheat Sheet", path: "/cheat-sheet" }
+      { name: "Cheat Sheet", path: "/cheat-sheet" },
+      { name: "Discord", path: "https://discord.gg/b9jQraVKRY", external: true }
     ]
   },
   { name: "Problems", path: "/problems" },
@@ -53,8 +54,8 @@ export const Navbar = () => {
                     >
                       <button
                         className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-1 ${isAboutActive
-                            ? "text-primary bg-primary/10"
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                           }`}
                       >
                         {link.name}
@@ -71,16 +72,28 @@ export const Navbar = () => {
                             className="absolute top-full left-0 mt-2 w-48 glass-card rounded-lg shadow-lg overflow-hidden"
                           >
                             {link.submenu.map((sublink) => (
-                              <Link
-                                key={sublink.path}
-                                to={sublink.path}
-                                className={`block px-4 py-3 font-medium transition-all duration-300 ${location.pathname === sublink.path
+                              sublink.external ? (
+                                <a
+                                  key={sublink.path}
+                                  href={sublink.path}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block px-4 py-3 font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                                >
+                                  {sublink.name}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={sublink.path}
+                                  to={sublink.path}
+                                  className={`block px-4 py-3 font-medium transition-all duration-300 ${location.pathname === sublink.path
                                     ? "text-primary bg-primary/10"
                                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                                  }`}
-                              >
-                                {sublink.name}
-                              </Link>
+                                    }`}
+                                >
+                                  {sublink.name}
+                                </Link>
+                              )
                             ))}
                           </motion.div>
                         )}
@@ -90,8 +103,8 @@ export const Navbar = () => {
                     <Link
                       to={link.path}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${location.pathname === link.path
-                          ? "text-primary bg-primary/10"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                         }`}
                     >
                       {link.name}
@@ -100,10 +113,12 @@ export const Navbar = () => {
                 </div>
               ))}
               <a
-                href="#"
+                href="https://forms.gle/5LP65FjwxqvmYmxy8"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="ml-2 px-5 py-2 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"
               >
-                Submit Your Prototype
+                Register
               </a>
             </div>
 
@@ -136,8 +151,8 @@ export const Navbar = () => {
                   to="/"
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === "/"
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
                   Home
@@ -147,8 +162,8 @@ export const Navbar = () => {
                   to="/about"
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === "/about"
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
                   About Challenge
@@ -158,30 +173,42 @@ export const Navbar = () => {
                   to="/cheat-sheet"
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 pl-8 rounded-lg font-medium transition-all duration-300 ${location.pathname === "/cheat-sheet"
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
                   Cheat Sheet
                 </Link>
 
+                <a
+                  href="https://discord.gg/b9jQraVKRY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-3 pl-8 rounded-lg font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                >
+                  Discord
+                </a>
+
                 <Link
                   to="/problems"
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === "/problems"
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
                   Problems
                 </Link>
 
                 <a
-                  href="#"
+                  href="https://forms.gle/5LP65FjwxqvmYmxy8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
                   className="block px-4 py-3 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
                 >
-                  Submit Your Prototype
+                  Register
                 </a>
               </div>
             </motion.div>
