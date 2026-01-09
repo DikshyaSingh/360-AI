@@ -33,10 +33,12 @@ const supportMechanisms = [
 ];
 
 const evaluationCriteria = [
-  { name: "Problem Clarity & Relevance", percentage: 25, color: "from-primary to-neon-cyan" },
-  { name: "Solution Innovation", percentage: 25, color: "from-secondary to-neon-violet" },
-  { name: "Prototype Functionality", percentage: 30, color: "from-accent to-neon-blue" },
-  { name: "Effective Use of Gen AI", percentage: 20, color: "from-primary to-secondary" },
+  { name: "Problem Clarity & Relevance", percentage: 15, color: "from-primary to-neon-cyan", description: "Clear articulation of the civic/societal problem and its relevance to the community" },
+  { name: "Solution Innovation", percentage: 25, color: "from-secondary to-neon-violet", description: "Creativity and uniqueness of the proposed AI-powered solution approach" },
+  { name: "Prototype Functionality", percentage: 25, color: "from-accent to-neon-blue", description: "Working demo that effectively demonstrates the core features and user experience" },
+  { name: "Effective Use of Gen AI", percentage: 20, color: "from-primary to-secondary", description: "Strategic integration of generative AI tools to accelerate development and enhance solution" },
+  { name: "Team Heterogeneity", percentage: 10, color: "from-emerald-400 to-teal-400", description: "Is the team formed by students from multiple streams (tech and non-tech backgrounds)? All CS/IT member teams not preferred - encourages diverse perspectives" },
+  { name: "Original Problem Statement", percentage: 5, color: "from-yellow-400 to-orange-400", description: "Did the team identify their own unique problem within the civic/societal domain rather than selecting from the provided list? Shows initiative and deeper understanding" },
 ];
 
 
@@ -160,8 +162,11 @@ const About = () => {
                   transition={{ delay: i * 0.1 }}
                   className="glass-card p-5"
                 >
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="font-medium">{criteria.name}</span>
+                  <div className="flex justify-between items-start gap-4 mb-2">
+                    <div className="flex-1">
+                      <span className="font-medium">{criteria.name}</span>
+                      <p className="text-sm text-muted-foreground mt-1">{criteria.description}</p>
+                    </div>
                     <span className="text-primary font-display font-bold">{criteria.percentage}%</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
