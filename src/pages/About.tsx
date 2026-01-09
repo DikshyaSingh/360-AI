@@ -27,7 +27,7 @@ const supportMechanisms = [
   { icon: MessageSquare, title: "Gen AI Prompt Cheat Sheet", description: "Pre-crafted prompts for quick starts" },
   { icon: Headphones, title: "Mentor Lifeline (2 mins)", description: "Quick expert guidance when stuck" },
   { icon: Wrench, title: "Help Desk", description: "Technical blocker resolution" },
-  { icon: MessageCircle, title: "Slack / Discord Channel", description: "Real-time community support" },
+  { icon: MessageCircle, title: "Discord Channel", description: "Real-time community support" },
   { icon: ClipboardCheck, title: "Evaluation Form", description: "Transparent scoring criteria" },
 ];
 
