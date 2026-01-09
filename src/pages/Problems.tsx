@@ -2,12 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import GlassCard from "@/components/ui/GlassCard";
-import { 
-  Leaf, 
-  Users, 
-  Heart, 
-  Recycle, 
-  Car, 
+import {
+  Leaf,
+  Users,
+  Heart,
+  Recycle,
+  Car,
   Cpu,
   Lightbulb,
   ChevronDown
@@ -26,6 +26,7 @@ const categories = [
       { id: "360AI03", title: "Personal Carbon Footprint Tracker", description: "Gamified app that calculates daily carbon emissions from transport, food, and energy choices with reduction challenges" },
       { id: "360AI04", title: "Urban Heat Island Mapper", description: "Crowdsourced temperature reporting showing coolest routes and areas, integrated with tree cover data" },
       { id: "360AI05", title: "Air Quality Prediction & Alert System", description: "Hyperlocal AQI forecasts with personalized health recommendations and mask reminders" },
+      { id: "360AI06", title: "Satellite-Based Waste Dumping Detection System", description: "Leverage satellite imagery to identify and map unauthorized solid waste dumping sites using distinct visual signatures for enforcement and cleanup prioritization" },
     ]
   },
   {
@@ -35,11 +36,11 @@ const categories = [
     color: "text-blue-400",
     bgColor: "bg-blue-400/10",
     problems: [
-      { id: "360AI06", title: "Gamified Civic Issues Reporting Platform", description: "Report potholes, streetlight outages, garbage with photo verification, upvoting, leaderboards, and resolution tracking" },
-      { id: "360AI07", title: "Civic App Listing Platform for Bengaluru", description: "Centralized directory of all government apps and services with ratings, tutorials, and user reviews" },
-      { id: "360AI08", title: "Participatory Budgeting Tool", description: "Citizens vote on local infrastructure projects with cost breakdowns and impact visualizations" },
-      { id: "360AI09", title: "Ward Councillor Performance Dashboard", description: "Track promises vs. delivery, budget utilization, and citizen complaint response times" },
-      { id: "360AI10", title: "Right to Information (RTI) Assistant", description: "AI-powered tool to draft RTI requests, track status, and showcase successful RTI stories" },
+      { id: "360AI07", title: "Gamified Civic Issues Reporting Platform", description: "Report potholes, streetlight outages, garbage with photo verification, upvoting, leaderboards, and resolution tracking" },
+      { id: "360AI08", title: "Civic App Listing Platform for Bengaluru", description: "Centralized directory of all government apps and services with ratings, tutorials, and user reviews" },
+      { id: "360AI09", title: "Participatory Budgeting Tool", description: "Citizens vote on local infrastructure projects with cost breakdowns and impact visualizations" },
+      { id: "360AI10", title: "Ward Councillor Performance Dashboard", description: "Track promises vs. delivery, budget utilization, and citizen complaint response times" },
+      { id: "360AI11", title: "Right to Information (RTI) Assistant", description: "AI-powered tool to draft RTI requests, track status, and showcase successful RTI stories" },
     ]
   },
   {
@@ -49,10 +50,11 @@ const categories = [
     color: "text-red-400",
     bgColor: "bg-red-400/10",
     problems: [
-      { id: "360AI11", title: "Seasonal Health Outbreak Map", description: "Dengue, malaria, flu hotspots based on open data, news scraping, and government health bulletins with prevention tips" },
-      { id: "360AI12", title: "Emergency Services Locator", description: "Find nearest hospitals, fire stations, police stations with real-time availability, ambulance tracking, and crowd-sourced wait times" },
-      { id: "360AI13", title: "Mental Health Check-in & Community Support", description: "Anonymous peer support matching, mood tracking, and local counselor directory" },
-      { id: "360AI14", title: "Food Safety Inspector", description: "Scan restaurant licenses, view health inspection scores, report violations, and see crowd-sourced hygiene ratings" },
+      { id: "360AI12", title: "Seasonal Health Outbreak Map", description: "Dengue, malaria, flu hotspots based on open data, news scraping, and government health bulletins with prevention tips" },
+      { id: "360AI13", title: "Emergency Services Locator", description: "Find nearest hospitals, fire stations, police stations with real-time availability, ambulance tracking, and crowd-sourced wait times" },
+      { id: "360AI14", title: "Mental Health Check-in & Community Support", description: "Anonymous peer support matching, mood tracking, and local counselor directory" },
+      { id: "360AI15", title: "Food Safety Inspector", description: "Scan restaurant licenses, view health inspection scores, report violations, and see crowd-sourced hygiene ratings" },
+      { id: "360AI16", title: "Healthy Ageing Knowledge Assistant", description: "AI-powered chatbot providing personalized guidance on nutrition, exercise, healthcare, and wellness specifically designed for senior citizens" },
     ]
   },
   {
@@ -62,10 +64,10 @@ const categories = [
     color: "text-emerald-400",
     bgColor: "bg-emerald-400/10",
     problems: [
-      { id: "360AI15", title: "Sustainable Neighborhood Discovery Map", description: "Find zero-waste stores, repair cafes, secondhand shops, farmers markets, and eco-friendly businesses" },
-      { id: "360AI16", title: "Food Waste Connector", description: "Match surplus food from restaurants/events with NGOs, shelters, and community fridges in real-time" },
-      { id: "360AI17", title: "Repair Before Replace Directory", description: "Locate local repair services for electronics, clothes, furniture with pricing and skill ratings" },
-      { id: "360AI18", title: "Community Tool Library Platform", description: "Share/borrow tools, equipment, and resources within neighborhoods to reduce consumption" },
+      { id: "360AI17", title: "Sustainable Neighborhood Discovery Map", description: "Find zero-waste stores, repair cafes, secondhand shops, farmers markets, and eco-friendly businesses" },
+      { id: "360AI18", title: "Food Waste Connector", description: "Match surplus food from restaurants/events with NGOs, shelters, and community fridges in real-time" },
+      { id: "360AI19", title: "Repair Before Replace Directory", description: "Locate local repair services for electronics, clothes, furniture with pricing and skill ratings" },
+      { id: "360AI20", title: "Community Tool Library Platform", description: "Share/borrow tools, equipment, and resources within neighborhoods to reduce consumption" },
     ]
   },
   {
@@ -75,8 +77,9 @@ const categories = [
     color: "text-yellow-400",
     bgColor: "bg-yellow-400/10",
     problems: [
-      { id: "360AI19", title: "Women's Safety Route Planner", description: "Crowdsourced safe routes with lighting scores, CCTV coverage, and emergency contact integration" },
-      { id: "360AI20", title: "Last-Mile Connectivity Optimizer", description: "Real-time tracking of auto-rickshaws, buses, and shared mobility at metro/bus stations with fare comparison" },
+      { id: "360AI21", title: "Women's Safety Route Planner", description: "Crowdsourced safe routes with lighting scores, CCTV coverage, and emergency contact integration" },
+      { id: "360AI22", title: "Last-Mile Connectivity Optimizer", description: "Real-time tracking of auto-rickshaws, buses, and shared mobility at metro/bus stations with fare comparison" },
+      { id: "360AI23", title: "Pedestrian Infrastructure Optimizer", description: "Identify and improve walkable routes across Bengaluru with safety scores, accessibility ratings, and pedestrianization recommendations for high-traffic areas" },
     ]
   },
   {
@@ -86,10 +89,10 @@ const categories = [
     color: "text-purple-400",
     bgColor: "bg-purple-400/10",
     problems: [
-      { id: "360AI21", title: "Waste Segregation Gamification with Computer Vision", description: "Snap photos of waste, AI identifies correct bin, earn points for proper disposal" },
-      { id: "360AI22", title: "Noise Pollution Heatmap", description: "IoT sound sensors creating real-time noise maps with complaint filing for chronic violators" },
-      { id: "360AI23", title: "Street Vendor Permit Tracker", description: "Help informal workers navigate licensing, find legal vending zones, and connect with microfinance" },
-      { id: "360AI24", title: "Rain Harvest Potential Calculator", description: "Input roof area, get rainwater collection potential, ROI calculation, and installer directory" },
+      { id: "360AI24", title: "Waste Segregation Gamification with Computer Vision", description: "Snap photos of waste, AI identifies correct bin, earn points for proper disposal" },
+      { id: "360AI25", title: "Noise Pollution Heatmap", description: "IoT sound sensors creating real-time noise maps with complaint filing for chronic violators" },
+      { id: "360AI26", title: "Street Vendor Permit Tracker", description: "Help informal workers navigate licensing, find legal vending zones, and connect with microfinance" },
+      { id: "360AI27", title: "Rain Harvest Potential Calculator", description: "Input roof area, get rainwater collection potential, ROI calculation, and installer directory" },
     ]
   },
 ];
