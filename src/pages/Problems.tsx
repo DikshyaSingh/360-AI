@@ -119,6 +119,7 @@ const Problems = () => {
             </h1>
             <p className="text-lg text-muted-foreground">
               Choose a problem that matters. Build a solution that impacts lives.
+              <br></br>If you're struggling to identify a problem on your own, choose one from a curated list that resonates most with your team.
             </p>
           </motion.div>
 
