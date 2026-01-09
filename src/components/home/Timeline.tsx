@@ -6,7 +6,7 @@ const timelineSteps = [
   { time: "15–25", label: "Solution Design", description: "Sketch your AI-powered approach" },
   { time: "25–40", label: "Rapid Prototyping", description: "Build with Gen AI tools" },
   { time: "40–43", label: "Submission", description: "Deploy and share your work" },
-  { time: "43–45", label: "Wrap-Up", description: "Final demos and celebration" },
+  { time: "43–45", label: "Wrap-Up", description: "Following evaluation, the top five teams will be awarded prizes for their innovative solutions" },
 ];
 
 export const Timeline = () => {
