@@ -1,5 +1,5 @@
-import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 export const Footer = () => {
   return (
@@ -9,15 +9,17 @@ export const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <Sparkles className="w-5 h-5 text-primary" />
-              </div>
+              <img
+                src={logo}
+                alt="AI 360° Logo"
+                className="w-10 h-10 object-contain"
+              />
               <span className="font-display font-bold text-lg gradient-text">
-                AI 360°  
+                AI 360°
               </span>
             </Link>
             <p className="text-muted-foreground max-w-sm">
-              Build real-world solutions for social good using Gen AI in just 45 minutes. 
+              Build real-world solutions for social good using Gen AI in just 45 minutes.
               Empowering students to create impactful civic solutions.
             </p>
           </div>
@@ -46,7 +48,18 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground text-sm">
-          <p>© 2026 AI 360°. </p>
+          <p>© 2026 AI 360°</p>
+          <p className="mt-2">
+            Powered by{" "}
+            <a
+              href="https://futurecitiesatlab.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline transition-all"
+            >
+              Future Cities & Assistive Technology Lab
+            </a>
+          </p>
         </div>
       </div>
     </footer>

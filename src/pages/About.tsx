@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import GlassCard from "@/components/ui/GlassCard";
-import { 
-  FileText, 
-  Eye, 
-  Lightbulb, 
+import {
+  FileText,
+  Eye,
+  Lightbulb,
   Link as LinkIcon,
   Users,
   MessageSquare,
@@ -39,11 +39,7 @@ const evaluationCriteria = [
 ];
 
 
-
-import { TypewriterText } from "@/components/ui/TypewriterText";
-
 const About = () => {
-  const [isFirstParaDone, setIsFirstParaDone] = useState(false);
 
   return (
     <Layout>
@@ -59,22 +55,13 @@ const About = () => {
               About the <span className="gradient-text">Challenge</span>
             </h1>
             <div className="space-y-6 text-lg text-muted-foreground text-left leading-relaxed">
-              <TypewriterText 
-                text="Welcome everyone! Over the next 45 minutes, you're going to take a real problem you care about and turn it into a working solution using Gen AI as your superpower. AI has democratized building—you don't need years of coding experience, just your creativity and empathy. We're talking about solving the issues that frustrate you daily: overflowing garbage bins, traffic nightmares, or air quality concerns."
-                speed={30}
-                startDelay={0.5}
-                onComplete={() => setIsFirstParaDone(true)}
-              />
-              
-              {/* Only mount/start the second one after the first is done. 
-                  We can render it but set shouldStart={isFirstParaDone} 
-              */}
-              <TypewriterText 
-                text="Your challenge is to pick one civic or societal issue that matters to you and build a proof-of-concept that could actually make a difference. Use open data, maps, or gamification, and let Gen AI be your expert co-pilot. Don't worry about perfection; we want to see a prototype that proves your idea works. So let's get started—pick a socially relevant problem and let's solve it!"
-                speed={30}
-                shouldStart={isFirstParaDone}
-                startDelay={0.5}
-              />
+              <p>
+                Welcome everyone! Over the next 45 minutes, you're going to take a real problem you care about and turn it into a working solution using Gen AI as your superpower. AI has democratized building—you don't need years of coding experience, just your creativity and empathy. We're talking about solving the issues that frustrate you daily: overflowing garbage bins, traffic nightmares, or air quality concerns.
+              </p>
+
+              <p>
+                Your challenge is to pick one civic or societal issue that matters to you and build a proof-of-concept that could actually make a difference. Use open data, maps, or gamification, and let Gen AI be your expert co-pilot. Don't worry about perfection; we want to see a prototype that proves your idea works. So let's get started—pick a socially relevant problem and let's solve it!
+              </p>
             </div>
           </motion.div>
 

@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import WhatIsThis from "@/components/home/WhatIsThis";
 import Timeline from "@/components/home/Timeline";
 import Tools from "@/components/home/Tools";
+import SubmitCTA from "@/components/home/SubmitCTA";
 
 const Index = () => {
   return (
@@ -11,6 +12,7 @@ const Index = () => {
       <WhatIsThis />
       <Timeline />
       <Tools />
+      <SubmitCTA />
     </Layout>
   );
 };

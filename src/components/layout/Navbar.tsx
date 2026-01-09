@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "../../assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -20,11 +21,13 @@ export const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                <Sparkles className="w-5 h-5 text-primary" />
-              </div>
+              <img
+                src={logo}
+                alt="AI 360° Logo"
+                className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
+              />
               <span className="font-display font-bold text-lg gradient-text">
-                AI 360° 
+                AI 360°
               </span>
             </Link>
 
@@ -34,11 +37,10 @@ export const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${location.pathname === link.path
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -47,7 +49,7 @@ export const Navbar = () => {
                 href="#"
                 className="ml-2 px-5 py-2 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"
               >
-                Register Now
+                Submit Your Prototype
               </a>
             </div>
 
@@ -81,11 +83,10 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                      location.pathname === link.path
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    }`}
+                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === link.path
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -93,9 +94,9 @@ export const Navbar = () => {
                 <a
                   href="#"
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 rounded-lg font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-300"
+                  className="block px-4 py-3 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
                 >
-                  Register Now
+                  Submit Your Prototype
                 </a>
               </div>
             </motion.div>
