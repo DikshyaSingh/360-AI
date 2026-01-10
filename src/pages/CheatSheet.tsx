@@ -10,7 +10,10 @@ import {
     XCircle,
     Rocket,
     Target,
-    Sparkles
+    Sparkles,
+    ExternalLink,
+    FolderOpen,
+    Globe
 } from "lucide-react";
 
 const CheatSheet = () => {
@@ -380,6 +383,52 @@ const CheatSheet = () => {
                                 </div>
                             </GlassCard>
                         </motion.div>
+                    </section>
+
+                    {/* Resources Section */}
+                    <section className="mb-12">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="mb-6"
+                        >
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 rounded-lg bg-accent/10">
+                                    <FolderOpen className="w-6 h-6 text-accent" />
+                                </div>
+                                <h2 className="font-display text-2xl md:text-3xl font-bold">
+                                    Resources & Data Sources
+                                </h2>
+                            </div>
+                        </motion.div>
+
+                        <GlassCard className="bg-gradient-to-br from-accent/10 to-primary/10 border-2 border-accent/20 hover:border-accent/40 transition-all duration-300">
+                            <div className="flex items-start gap-4">
+                                <div className="p-4 rounded-xl bg-accent/20 shrink-0">
+                                    <Globe className="w-8 h-8 text-accent" />
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="font-display text-xl font-bold mb-2 flex items-center gap-2">
+                                        OpenCity - Urban Data Portal
+
+                                    </h3>
+                                    <p className="text-muted-foreground mb-4">
+                                        Access comprehensive urban datasets for Bengaluru and other Indian cities. Find data on infrastructure, demographics, environment, transportation, and more to power your civic innovation projects.
+                                    </p>
+                                    <a
+                                        href="https://share.google/W8afhOPLkZCAdE5VO"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-accent/40"
+                                    >
+                                        <Globe className="w-5 h-5" />
+                                        Access OpenCity Data Portal
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            </div>
+                        </GlassCard>
                     </section>
 
                     {/* Final Message */}
