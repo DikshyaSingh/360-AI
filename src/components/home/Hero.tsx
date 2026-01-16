@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/image1.jpg";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export const Hero = () => {
@@ -11,13 +11,11 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-4">
       {/* Hero background image */}
       <div className="absolute inset-0 overflow-hidden">
-        <img 
-          src={heroBg} 
-          alt="" 
+        <img
+          src={heroBg}
+          alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 rounded-full blur-3xl animate-pulse-glow" />
       </div>
 
       <div className="container mx-auto relative z-10">
@@ -35,14 +33,14 @@ export const Hero = () => {
 
           {/* Title */}
           <div className="font-display text-5xl md:text-7xl font-bold mb-6 flex flex-col items-center">
-            <TypewriterText 
+            <TypewriterText
               text="AI Meets"
               className="gradient-text leading-tight pb-2"
               speed={50}
               startDelay={0.5}
               onComplete={() => setIsFirstPartDone(true)}
             />
-            <TypewriterText 
+            <TypewriterText
               text="Impact"
               className="text-foreground leading-tight"
               speed={50}
