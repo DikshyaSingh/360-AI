@@ -16,6 +16,7 @@ const navLinks = [
     ]
   },
   { name: "Problem Statements", path: "/problems" },
+  { name: "Winners", path: "/winners" },
   { name: "Submit Your Prototype", path: "https://forms.gle/mCfAenbv1FRFKiem9", external: true },
 ];
 
@@ -209,6 +210,17 @@ export const Navbar = () => {
                     }`}
                 >
                   Problem Statements
+                </Link>
+
+                <Link
+                  to="/winners"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === "/winners"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    }`}
+                >
+                  Winners
                 </Link>
 
                 <a

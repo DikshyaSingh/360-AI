@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import CheatSheet from "./pages/CheatSheet";
 import Problems from "./pages/Problems";
+import Winners from "./pages/Winners";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/cheat-sheet" element={<CheatSheet />} />
           <Route path="/problems" element={<Problems />} />
+          <Route path="/winners" element={<Winners />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
