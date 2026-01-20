@@ -147,7 +147,7 @@ export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
                     </Button>
                 </div>
                 <Button asChild className="w-full" variant="default">
-                    <a href="https://discord.gg/ygY4uruda" target="_blank" rel="noopener noreferrer">
+                    <a href="https://discord.gg/Nb9aHrumQ" target="_blank" rel="noopener noreferrer">
                         <MessageCircle className="mr-2 h-4 w-4" />
                         Join Discussion
                     </a>
