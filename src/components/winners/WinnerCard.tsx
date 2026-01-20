@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Trophy, ExternalLink, Zap, Medal, ThumbsUp } from "lucide-react";
+import { Trophy, ExternalLink, Zap, Medal, ThumbsUp, MessageCircle } from "lucide-react";
 
 export interface Winner {
     rank: number;
@@ -125,24 +125,32 @@ export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
                 )}
             </CardContent>
 
-            <CardFooter className="p-6 pt-0 mt-auto flex gap-3">
-                {winner.prototypeLink && (
-                    <Button asChild className="flex-1 group" variant="outline">
-                        <a href={winner.prototypeLink} target="_blank" rel="noopener noreferrer">
-                            <Zap className="mr-2 h-4 w-4 group-hover:text-yellow-400 transition-colors" />
-                            View Prototype
-                        </a>
+            <CardFooter className="p-6 pt-0 mt-auto flex flex-col gap-3">
+                <div className="flex gap-3 w-full">
+                    {winner.prototypeLink && (
+                        <Button asChild className="flex-1 group" variant="outline">
+                            <a href={winner.prototypeLink} target="_blank" rel="noopener noreferrer">
+                                <Zap className="mr-2 h-4 w-4 group-hover:text-yellow-400 transition-colors" />
+                                View Prototype
+                            </a>
+                        </Button>
+                    )}
+                    <Button
+                        className={`flex-1 ${!winner.prototypeLink ? 'w-full' : ''} transition-all active:scale-95`}
+                        variant="secondary"
+                        onClick={onUpvote}
+                        disabled={isVoting}
+                    >
+                        <ThumbsUp className={`mr-2 h-4 w-4 ${isVoting ? 'animate-pulse' : 'text-primary'}`} />
+                        <span className="font-bold">{winner.votes || 0}</span>
+                        <span className="ml-1 opacity-70">Votes</span>
                     </Button>
-                )}
-                <Button
-                    className={`flex-1 ${!winner.prototypeLink ? 'w-full' : ''} transition-all active:scale-95`}
-                    variant="secondary"
-                    onClick={onUpvote}
-                    disabled={isVoting}
-                >
-                    <ThumbsUp className={`mr-2 h-4 w-4 ${isVoting ? 'animate-pulse' : 'text-primary'}`} />
-                    <span className="font-bold">{winner.votes || 0}</span>
-                    <span className="ml-1 opacity-70">Votes</span>
+                </div>
+                <Button asChild className="w-full" variant="default">
+                    <a href="https://discord.gg/ygY4uruda" target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        Join Discussion
+                    </a>
                 </Button>
             </CardFooter>
         </Card>
