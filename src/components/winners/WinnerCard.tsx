@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -51,17 +52,20 @@ export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
         }
     };
 
+    const [imageError, setImageError] = useState(false);
+
     const styles = getRankStyles(winner.rank);
 
     return (
         <Card className={`h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-card/50 backdrop-blur-sm border-2 ${styles.card}`}>
             <CardHeader className="p-0 relative">
                 <div className="relative h-48 w-full overflow-hidden bg-muted/30 group">
-                    {winner.imageUrl ? (
+                    {winner.imageUrl && !imageError ? (
                         <img
                             src={winner.imageUrl}
                             alt={winner.projectTitle}
                             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            onError={() => setImageError(true)}
                         />
                     ) : (
                         <div className="flex h-full flex-col items-center justify-center text-muted-foreground gap-2">
@@ -101,7 +105,7 @@ export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
                     </h3>
                     <div className="flex items-center gap-2 text-primary font-medium">
                         <Medal className="w-4 h-4" />
-                        <span>Team Name: {winner.teamName}</span>
+                        <span>Team: {winner.teamName}</span>
                     </div>
                 </div>
 
