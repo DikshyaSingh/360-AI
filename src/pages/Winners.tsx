@@ -10,7 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 
 // Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbwHaOux8vCIXw-VRjZPwUXfmMBYHsjrP2audEA2rb0Gw_sliO88CqRzptvWRM7wphKk/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyHK-avNDudP5lQhZJDH93wB3yUMTatMqSAsayonT1tZhJ-Ub0PEQkOYciKKe_uxQo/exec";
 
 const fetchWinners = async (): Promise<Winner[]> => {
     const response = await fetch(API_URL);
@@ -57,12 +57,16 @@ const Winners = () => {
     });
 
     const [votingFor, setVotingFor] = useState<string | null>(null);
+    const [votedTeams, setVotedTeams] = useState<string[]>(() => {
+        const saved = localStorage.getItem('voted_teams');
+        return saved ? JSON.parse(saved) : [];
+    });
 
     const handleUpvote = async (teamName: string) => {
+        if (votedTeams.includes(teamName)) return;
+
         setVotingFor(teamName);
         try {
-            // 1. Get User IP
-            // We use a timeout to fail fast if ipify is blocked
             const ipController = new AbortController();
             const ipTimeout = setTimeout(() => ipController.abort(), 3000);
 
@@ -72,32 +76,25 @@ const Winners = () => {
                 const ipData = await ipResponse.json();
                 userIp = ipData.ip;
             } catch (e) {
-                console.warn("Could not fetch IP, sending without unique checking may fail on server.", e);
+                console.warn("Could not fetch IP", e);
             } finally {
                 clearTimeout(ipTimeout);
             }
 
-            // 2. Send Vote
             await fetch(API_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8',
-                },
-                body: JSON.stringify({
-                    teamName: teamName,
-                    userIp: userIp
-                })
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ teamName, userIp })
             });
 
-            // 3. User Feedback
-            toast.success(`Vote submitted for ${teamName}!`, {
-                description: "Note: If you already voted for this team, it won't be counted again."
-            });
+            // Save to local state and localStorage
+            const newVotedTeams = [...votedTeams, teamName];
+            setVotedTeams(newVotedTeams);
+            localStorage.setItem('voted_teams', JSON.stringify(newVotedTeams));
 
-            setTimeout(() => {
-                refetch();
-            }, 1500);
+            toast.success(`Vote submitted for ${teamName}!`);
+            setTimeout(() => refetch(), 1500);
 
         } catch (err) {
             console.error("Voting failed", err);
@@ -107,12 +104,17 @@ const Winners = () => {
         }
     };
 
+    const handleResetVotes = () => {
+        localStorage.removeItem('voted_teams');
+        setVotedTeams([]);
+        toast.info("Voting history cleared (local only)");
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <Navbar />
 
             <main className="flex-grow pt-24 pb-16 px-4 sm:px-8 max-w-7xl mx-auto w-full">
-                {/* ... (Header) ... */}
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
                         <Trophy className="w-8 h-8 text-primary" />
@@ -120,9 +122,19 @@ const Winners = () => {
                     <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600 mb-4">
                         Hackathon Winners
                     </h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
                         Celebrating the most innovative and impactful projects built during the event.
                     </p>
+                    {/* 
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={handleResetVotes}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                        (Testing: Reset My Local Votes)
+                    </Button>
+                    */}
                 </div>
 
                 {isLoading ? (
@@ -147,13 +159,14 @@ const Winners = () => {
                         </p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-content-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {winners?.map((winner, index) => (
-                            <div key={index} className="w-full max-w-sm mx-auto">
+                            <div key={index} className="w-full">
                                 <WinnerCard
                                     winner={winner}
                                     onUpvote={() => handleUpvote(winner.teamName)}
                                     isVoting={votingFor === winner.teamName}
+                                    hasVoted={votedTeams.includes(winner.teamName)}
                                 />
                             </div>
                         ))}

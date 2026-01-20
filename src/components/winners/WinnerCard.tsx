@@ -20,9 +20,10 @@ interface WinnerCardProps {
     winner: Winner;
     onUpvote?: () => void;
     isVoting?: boolean;
+    hasVoted?: boolean;
 }
 
-export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
+export const WinnerCard = ({ winner, onUpvote, isVoting, hasVoted }: WinnerCardProps) => {
     const getRankStyles = (rank: number) => {
         switch (rank) {
             case 1:
@@ -137,13 +138,13 @@ export const WinnerCard = ({ winner, onUpvote, isVoting }: WinnerCardProps) => {
                     )}
                     <Button
                         className={`flex-1 ${!winner.prototypeLink ? 'w-full' : ''} transition-all active:scale-95`}
-                        variant="secondary"
+                        variant={hasVoted ? "outline" : "secondary"}
                         onClick={onUpvote}
-                        disabled={isVoting}
+                        disabled={isVoting || hasVoted}
                     >
-                        <ThumbsUp className={`mr-2 h-4 w-4 ${isVoting ? 'animate-pulse' : 'text-primary'}`} />
+                        <ThumbsUp className={`mr-2 h-4 w-4 ${isVoting ? 'animate-pulse' : hasVoted ? 'text-green-500' : 'text-primary'}`} />
                         <span className="font-bold">{winner.votes || 0}</span>
-                        <span className="ml-1 opacity-70">Votes</span>
+                        <span className="ml-1 opacity-70">{hasVoted ? 'Voted' : 'Votes'}</span>
                     </Button>
                 </div>
                 <Button asChild className="w-full" variant="default">
